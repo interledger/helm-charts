@@ -1,2 +1,1 @@
-# helm-charts
-Interledger Kubernetes Helm Charts
+# Interledger Kubernetes Helm Charts
