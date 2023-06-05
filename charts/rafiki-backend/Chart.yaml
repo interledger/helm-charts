@@ -2,8 +2,7 @@ apiVersion: v2
 name: rafiki-backend
 description: Rafiki Backend Service - Helm chart
 maintainers:
-  - name: https://interledger.org
-    email: tech@interledger.org
+  - name: sabineschaller
 
 # A chart can be either an 'application' or a 'library' chart.
 #
