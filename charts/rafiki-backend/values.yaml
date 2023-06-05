@@ -26,15 +26,15 @@ port:
   connector: 3002
   openPayments: 80
 ilp:
-  address: test.cloud-nine-wallet # override this value
-  streamSecret: "BjPXtnd00G2mRQwP/8ZpwyZASOch5sUXT5o0iR5b5wU=" # override this value
+  address: test.cloud-nine-wallet  # override this value
+  streamSecret: "BjPXtnd00G2mRQwP/8ZpwyZASOch5sUXT5o0iR5b5wU="  # override this value
   slippage: 0.01
 key:
   id: rafiki
   file: ''
 quoteSignatureSecret: "overridethisValue"
 withdrawalThrottleDelay: ''
-lifetime: 
+lifetime:
   exchangeRate: 15000
   quote: 300000
   webhook: 200
