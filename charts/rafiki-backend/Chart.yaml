@@ -1,6 +1,10 @@
 apiVersion: v2
 name: rafiki-backend
 description: Rafiki Backend Service - Helm chart
+maintainers:
+  - name: Sabine Schaller
+    email: tech@interledger.org
+    url: https://interledger.org
 
 # A chart can be either an 'application' or a 'library' chart.
 #
@@ -22,6 +26,4 @@ version: 0.1.0
 # follow Semantic Versioning. They should reflect the version the application is using.
 # It is recommended to use it with quotes.
 appVersion: 'v1.0.0-alpha.1'
-maintainers:
-  - name: Sabine Schaller
-    email: tech@interledger.org
+
