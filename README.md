@@ -1,6 +1,6 @@
 # Interledger Kubernetes Helm Charts
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![Release Charts](https://github.com/interledger/helm-charts/workflows/Release%20Charts/badge.svg?branch=main)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Release Charts](https://github.com/interledger/helm-charts/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/interledger/helm-charts/actions/workflows/release.yaml)
 
 This functionality is in alpha and is subject to change. The code is provided as-is with no warranties.
 
@@ -35,4 +35,4 @@ We'd love to have you contribute!
 
 ## Helm charts build status
 
-![Release Charts](https://github.com/interledger/helm-charts/workflows/Release%20Charts/badge.svg?branch=main)
+[![Release Charts](https://github.com/interledger/helm-charts/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/interledger/helm-charts/actions/workflows/release.yaml)
