@@ -1,5 +1,18 @@
 apiVersion: v1
 entries:
+  rafiki-auth:
+  - apiVersion: v2
+    appVersion: v1.0.0-alpha.1
+    created: "2023-06-06T11:03:15.312153796Z"
+    description: Rafiki Auth Service - Helm chart
+    digest: 84a4832fed4594d6ce800b63b2a24668a4dca93c4c40a3800bab0ee6bae80038
+    maintainers:
+    - name: sabineschaller
+    name: rafiki-auth
+    type: application
+    urls:
+    - https://github.com/interledger/helm-charts/releases/download/rafiki-auth-0.1.0/rafiki-auth-0.1.0.tgz
+    version: 0.1.0
   rafiki-backend:
   - apiVersion: v2
     appVersion: v1.0.0-alpha.1
@@ -26,4 +39,4 @@ entries:
     urls:
     - https://github.com/interledger/helm-charts/releases/download/rafiki-frontend-0.1.0/rafiki-frontend-0.1.0.tgz
     version: 0.1.0
-generated: "2023-06-05T10:43:39.753919117Z"
+generated: "2023-06-06T11:03:15.312162896Z"
