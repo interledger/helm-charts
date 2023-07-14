@@ -49,7 +49,7 @@ idempotency:
   keyLock: 2000
 image:
   repository: ghcr.io/interledger/rafiki-backend
-  tag: 'v1.0.0-alpha.1'
+  tag: 'v1.0.0-alpha.2'
   digest: ''
   pullPolicy: IfNotPresent
 rollingUpdate:
