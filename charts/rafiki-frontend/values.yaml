@@ -3,7 +3,7 @@ serviceUrls:
 port: 3010
 image:
   repository: ghcr.io/interledger/rafiki-frontend
-  tag: 'v1.0.0-alpha.2'
+  tag: 'v1.0.0-alpha.3'
   digest: ''
   pullPolicy: IfNotPresent
 rollingUpdate:
