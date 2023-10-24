@@ -32,7 +32,7 @@ You can contribute to helm-charts in several ways.
 
 ### :mega: Discussions
 
-Discussions are where we have conversations about Rafiki.
+Discussions are where we have conversations about helm-charts.
 
 If you would like to discuss topics about the broader ecosystem, have a new idea, or want to show off your work - join us in [discussions](https://github.com/interledger/helm-charts/discussions).
 
