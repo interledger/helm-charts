@@ -19,7 +19,7 @@ You can then run `helm search repo interledger` to see the charts.
 
 # Contributing to this repository
 
-The source code of all [Interledger](https://interledger.org) community [Helm](https://helm.sh) charts can be found on Github: <https://github.com/interledger/helm-charts/>
+The source code of all [Interledger](https://interledger.org) community can be found on Github: <https://github.com/interledger/helm-charts/>
 
 ## Before you begin
 
