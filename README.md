@@ -1,3 +1,19 @@
+## Table of Contents
+
+- [Interledger Kubernetes Helm Charts](#interledger-kubernetes-helm-charts)
+- [Usage](#usage)
+- [Contributing to this repository](#contributing-to-this-repository)
+  - [Before you begin](#before-you-begin)
+  - [Types of contributions](#types-of-contributions)
+    - [:mega: Discussions](#mega-discussions)
+    - [:beetle: Issues](#beetle-issues)
+    - [:hammer_and_wrench: Pull requests](#hammer_and_wrench-pull-requests)
+  - [Reporting Issues](#reporting-issues)
+  - [Submitting Pull Requests](#submitting-pull-requests)
+  - [Review Process](#review-process)
+- [License](#license)
+- [Helm charts build status](#helm-charts-build-status)
+  
 # Interledger Kubernetes Helm Charts
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Release Charts](https://github.com/interledger/helm-charts/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/interledger/helm-charts/actions/workflows/release.yaml)
@@ -47,8 +63,35 @@ If you've found something that needs fixing, search open issues to see if someon
 Feel free to fork and create a pull request on changes you think you can contribute.
 
 The team will review your pull request as soon as possible.
-
 <!-- Keep full URL links to repo files because this README syncs from main to gh-pages.  -->
+### Reporting Issues
+
+If you encounter any issues or have a feature request, please create a new issue and provide the following details:
+
+- A clear and descriptive title.
+- A detailed description of the issue, including steps   to reproduce if applicable.
+- Information about your environment (e.g., operating system, browser, version).
+- Any relevant screenshots or error messages.
+
+### Submitting Pull Requests
+
+1. Fork the repository.
+2. Create a new branch from main.
+3. Make your changes and commit them.
+4. Create a pull request (PR) to main.
+5. Ensure your PR includes a clear title and description following the Conventional Commits Specification.
+6. If your PR addresses an issue, reference the issue in the description using Closes #123.
+7. Be patient and be prepared to address feedback and make changes if needed.
+
+### Review Process
+
+- Project maintainers will review your PR for code quality, correctness, and adherence to guidelines.
+
+- Please respond to any feedback promptly and make necessary changes.
+
+- Once the PR is approved, it will be merged into the main branch.
+
+
 
 We'd love to have you contribute!
 
