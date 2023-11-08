@@ -1,0 +1,13 @@
+{{- define "common.configMap.tpl" -}}
+{{- $top := first . }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "common.fullname" $top }}
+  {{- include "common.metadata" (list $top) | nindent 2 }}
+data: {}
+{{- end }}
+
+{{- define "common.configMap" -}}
+{{- include "common.utils.merge" (append . "common.configMap.tpl") }}
+{{- end }}

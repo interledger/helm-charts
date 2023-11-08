@@ -1,0 +1,55 @@
+{{- define "common.container.tpl" -}}
+{{- $top := first . }}
+{{- $container := index . 1 }}
+{{- $pod := index . 2 }}
+{{- $image := $container.image | default (dict) }}
+{{- $imageDigest := $image.digest }}
+- name: {{ $container.name | default $top.Chart.Name }}
+  securityContext:
+    {{- toYaml $top.Values.securityContext | nindent 4 }}
+  {{- if $imageDigest}}
+  image: "{{ $image.repository }}@sha256:{{ $top.Chart.AppVersion }}"
+  {{- else }}
+  image: "{{ $image.repository }}:{{ $top.Chart.AppVersion }}"
+  {{- end }}
+  imagePullPolicy: {{ $container.image.pullPolicy | quote | default "Always" }}
+  resources:
+    {{- toYaml $container.resources | nindent 4 }}
+
+  {{- with $container.env }}
+  env: {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $container.command }}
+  command: {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- with $container.livenessProbe }}
+  livenessProbe: {{ include "common.probe" (list $top .) | nindent 4 }}
+  {{- end }}
+
+  {{- with $container.readinessProbe }}
+  readinessProbe: {{ include "common.probe" (list $top .) | nindent 4 }}
+  {{- end }}
+
+  {{- with $container.ports }}
+  ports: {{- toYaml . | nindent 4 }}
+  {{- end }}
+
+  {{- if or ($pod.secretProvider) ($container.volumeMounts) }}
+  volumeMounts:
+    {{- range $secretProvider := $pod.secretProvider }}
+    - name: {{ $secretProvider.name }}
+      mountPath: {{ printf "/mnt/secrets-store-%s" $secretProvider.name }}
+      readOnly: true
+    {{- end }}
+    {{- with $container.volumeMounts }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- end }}
+
+{{- end }} # define
+
+{{- define "common.container" -}}
+{{- include "common.utils.merge" (append . "common.container.tpl") }}
+{{- end }}
