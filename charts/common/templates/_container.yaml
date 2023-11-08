@@ -20,6 +20,10 @@
   env: {{- toYaml . | nindent 4 }}
   {{- end }}
 
+  {{- with $container.envFrom }}
+  envFrom: {{- toYaml . | nindent 4 }}
+  {{- end }}
+
   {{- with $container.command }}
   command: {{- toYaml . | nindent 4 }}
   {{- end }}

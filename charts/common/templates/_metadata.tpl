@@ -14,7 +14,6 @@ app.kubernetes.io/instance: {{ include "common.fullname" . }}
 
 {{- define "common.metadata.tpl" -}}
 {{- $top := first . -}}
-namespace: {{ $top.Values.namespace | default $top.Chart.Name }}
 labels:
   {{- include "common.labels" $top | nindent 2 }}
 {{- end }}
