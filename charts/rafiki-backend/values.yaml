@@ -1,3 +1,72 @@
+replicaCount: 1
+
+nodeSelector: {}
+
+image: &image
+  repository: ghcr.io/interledger/rafiki-backend
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 1
+  cpuUtilizationPercentage: 80
+  memoryUtilizationPercentage: 80
+
+service:
+  - name: service
+    type: ClusterIP
+    ports:
+      - port: 3000
+        targetPort: 3000
+        protocol: TCP
+        name: open-payments
+      - port: 3001
+        targetPort: 3001
+        protocol: TCP
+        name: admin
+      - port: 3002
+        targetPort: 3002
+        protocol: TCP
+        name: connector
+
+configmap:
+  - files/config.yaml
+
+secrets:
+  - files/secret.yaml
+
+containers:
+  - name: server
+    image:
+      <<: *image
+    envFrom:
+      - configMapRef:
+          name: rafiki-backend
+      - secretRef:
+          name: rafiki-backend
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 200m
+      limits:
+        memory: 512Mi
+        cpu: 400m
+    ports:
+      - name: open-payments
+        containerPort: 3000
+        protocol: TCP
+      - name: admin
+        containerPort: 3001
+        protocol: TCP
+      - name: connector
+        containerPort: 3002
+        protocol: TCP
+
 nodeEnv: development
 logLevel: debug
 serviceUrls:
@@ -7,24 +76,26 @@ serviceUrls:
   WEBHOOK_URL: http://cloud-nine-wallet/webhooks
   EXCHANGE_RATES_URL: http://cloud-nine-wallet/prices
   QUOTE_URL: http://cloud-nine-wallet/quotes
-  AUTH_SERVER_GRANT_URL: http://rafiki-auth:3006
-  AUTH_SERVER_INTROSPECTION_URL: http://rafiki-auth:3007
+  AUTH_SERVER_GRANT_URL: http://rafiki-auth.rafiki-auth:3006
+  AUTH_SERVER_INTROSPECTION_URL: http://rafiki-auth.rafiki-auth:3007
 redis:
-  host: 'redis.example.com'
+  auth:
+    enabled: false
+  host: 'rafiki-backend-redis-master.rafiki-backend'
   port: 6379
   tlsCaFile: ''
   tlsCertFile: ''
   tlsKeyFile: ''
 postgresql:
-  host: "postgres.example.com"
-  port: 5432
+  host: "34.42.108.250"
+  port: "5432"
   username: "backend"
   database: "backend"
-  password: "overridethisValue"
+  password: "backend"
 port:
   admin: 3001
   connector: 3002
-  openPayments: 80
+  openPayments: 3000
 ilp:
   address: test.cloud-nine-wallet  # override this value
   streamSecret: "BjPXtnd00G2mRQwP/8ZpwyZASOch5sUXT5o0iR5b5wU="  # override this value
@@ -47,26 +118,3 @@ workerIdle: 200
 idempotency:
   keyTTL: 86400000
   keyLock: 2000
-image:
-  repository: ghcr.io/interledger/rafiki-backend
-  tag: 'v1.0.0-alpha.3'
-  digest: ''
-  pullPolicy: IfNotPresent
-rollingUpdate:
-  maxSurge: 100%
-  maxUnavailable: 50%
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ''
-securityContext:
-  {}
-#  resources:
-#    limits:
-#      memory: 1Gi
-#      cpu: 450m
-#    requests:
-#      memory: 800Mi
-#      cpu: 300m
