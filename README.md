@@ -63,6 +63,9 @@ And since we are talking about helm charts, there is probably not worth mentioni
 ## 🚀 Future Scope <a name = "future_scope"></a>
 Support newer versions and resources of Kubernetes. And have possibility to create different resource version based on k8s version 
 
+Implement helm chart for rafiki backend and frontend.
+Start using Secret CSI Driver combined with HashiCorp Vault for secret injections into environmental variables
+
 ## 🏁 Getting Started <a name = "getting_started"></a>
 Don't know what I should write here.
 This is not the section your are looking for. Move along.
@@ -71,9 +74,6 @@ This is not the section your are looking for. Move along.
 
 You need to have Helm CLI on your computer. You can find the installation instructions here [https://helm.sh/docs/intro/install/](https://helm.sh/docs/intro/install/)
 
-```
-Give examples
-```
 
 ### Installing
 
@@ -99,25 +99,15 @@ In order to run unittests locally, you will need to have installed [Helm Unittes
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+Use ArgoCD :)
 
 ## ⛏️ Built With <a name = "tech_stack"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Helm](https://helm.sh/) - Helm Chart CLI
+- [Helm Unittest](https://github.com/helm-unittest/helm-unittest) - Unittests
+- [Terratest](https://terratest.gruntwork.io/) - Integration tests
 
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@golobitch](https://github.com/golobitch) - Idea & Initial work
-- []
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors)
-who participated in this project.
-
-## 🎉 Acknowledgments <a name = "acknowledgments"></a>
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- [@enejm](https://github.com/enejm) - Initial work
