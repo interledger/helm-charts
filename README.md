@@ -1,38 +1,113 @@
-# Interledger Kubernetes Helm Charts
+<p align="center">
+  <a href="" rel="noopener">
+ <img src="https://pbs.twimg.com/profile_images/1382071864642527232/NcsZ8ZoB_400x400.png" alt="Project logo"></a>
+</p>
+<h3 align="center">Interledger Helm Charts</h3>
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Release Charts](https://github.com/interledger/helm-charts/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/interledger/helm-charts/actions/workflows/release.yaml)
+<div align="center">
 
-This functionality is in alpha and is subject to change. The code is provided as-is with no warranties.
+[![Hackathon](https://img.shields.io/badge/Interledger_Summit-ILP_Summit_2023_Edition-blue.svg)](https://interledger-hackathon-2023.devpost.com)
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/golobitch/helm-charts.svg)](https://github.com/golobitch/helm-charts/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/golobitch/helm-charts.svg)](https://github.com/golobitch/helm-charts/pulls)
+[![License](https://img.shields.io/badge/license-Apache_2.0-blue.svg)](LICENSE.md)
 
-## Usage
+</div>
 
-[Helm](https://helm.sh) must be installed to use the charts.
-Please refer to Helm's [documentation](https://helm.sh/docs/) to get started.
+---
 
-Once Helm is set up properly, add the repo as follows:
+<p align="center"> Simplify creating of a Helm Charts through a common library
+    <br> 
+</p>
 
-```console
-helm repo add interledger https://interledger.github.io/helm-charts
+## 📝 Table of Contents
+
+- [Problem Statement](#problem_statement)
+- [Idea / Solution](#idea)
+- [Dependencies / Limitations](#limitations)
+- [Future Scope](#future_scope)
+- [Setting up a local environment](#getting_started)
+- [Usage](#usage)
+- [Technology Stack](#tech_stack)
+- [Contributing](../CONTRIBUTING.md)
+- [Authors](#authors)
+
+## 🧐 Problem Statement <a name = "problem_statement"></a>
+
+
+
+## 💡 Idea / Solution <a name = "idea"></a>
+The main problem with the existing helm charts is that every package is creating all of their k8s resources. IMHO this is not a good coding. Instead, the perfect way would to to have one opinionated library, that will build the whole k8s resources and the application chart would only provide just values and the k8s resources that it needs.
+
+So the setup would be like this:
+
+```
+charts
+├── common
+├── rafiki-auth
+├── rafiki-backend
+└── rafiki-frontend
 ```
 
-You can then run `helm search repo interledger` to see the charts.
+Common is library helm chart and others are application charts.
+In ideal world, you would also have simple unittests and integration tests
 
-## Contributing
+## ⛓️ Dependencies / Limitations <a name = "limitations"></a>
+Well, in order to run integration tests, you will need to have k8s cluster up and running. This can be done either with managed k8s (like GKE, AKE, EKS,...) or a local one with minikube/docker desktop/k3s...
 
-The source code of all [Interledger](https://interledger.org) community [Helm](https://helm.sh) charts can be found on Github: <https://github.com/interledger/helm-charts/>
+In order to run unittests, you will need to have unittest plugin for helm installed (more about that later).
 
-<!-- Keep full URL links to repo files because this README syncs from main to gh-pages.  -->
+And since we are talking about helm charts, there is probably not worth mentioning that you will need to have helm cli installed.
 
-We'd love to have you contribute!
 
-<!-- Please refer to our [contribution guidelines](https://github.com/interledger/helm-charts/blob/main/CONTRIBUTING.md) for details. -->
+## 🚀 Future Scope <a name = "future_scope"></a>
+Support newer versions and resources of Kubernetes. And have possibility to create different resource version based on k8s version 
 
-## License
+Implement helm chart for rafiki backend and frontend.
+Start using Secret CSI Driver combined with HashiCorp Vault for secret injections into environmental variables
 
-<!-- Keep full URL links to repo files because this README syncs from main to gh-pages.  -->
+## 🏁 Getting Started <a name = "getting_started"></a>
+Don't know what I should write here.
+This is not the section your are looking for. Move along.
 
-[Apache 2.0 License](https://github.com/interledger/helm-charts/blob/main/LICENSE).
+### Prerequisites
 
-## Helm charts build status
+You need to have Helm CLI on your computer. You can find the installation instructions here [https://helm.sh/docs/intro/install/](https://helm.sh/docs/intro/install/)
 
-[![Release Charts](https://github.com/interledger/helm-charts/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/interledger/helm-charts/actions/workflows/release.yaml)
+
+### Installing
+
+A step by step series of examples that tell you how to create a new helm chart with the common library
+
+```
+helm create myChart
+```
+
+All that you need now, just add a dependency for a common helm chart and build it
+```
+helm dependency build
+```
+
+or if you need to update the dependency run following command:
+```
+helm dependency update
+```
+
+#### Unittests
+In order to run unittests locally, you will need to have installed [Helm Unittests](https://github.com/helm-unittest/helm-unittest)
+
+
+## 🎈 Usage <a name="usage"></a>
+
+Use ArgoCD :)
+
+## ⛏️ Built With <a name = "tech_stack"></a>
+
+- [Helm](https://helm.sh/) - Helm Chart CLI
+- [Helm Unittest](https://github.com/helm-unittest/helm-unittest) - Unittests
+- [Terratest](https://terratest.gruntwork.io/) - Integration tests
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@golobitch](https://github.com/golobitch) - Idea & Initial work
+- [@enejm](https://github.com/enejm) - Initial work

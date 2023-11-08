@@ -1,0 +1,18 @@
+{{- define "common.probe.tpl" -}}
+{{- $top := first . }}
+{{- $probe := index . 1 }}
+initialDelaySeconds: {{ default 30 $probe.initialDelaySeconds }}
+periodSeconds: {{ default 5 $probe.periodSeconds }}
+timeoutSeconds: {{ default 1 $probe.timeoutSeconds }}
+successThreshold: {{ default 1 $probe.successThreshold }}
+failureThreshold: {{ default 3 $probe.failureThreshold }}
+{{- if $probe.httpGet }}
+httpGet: {{- toYaml $probe.httpGet | nindent 2 }}
+{{ else }}
+exec: {{- toYaml $probe.exec | nindent 2 }}
+{{- end }}
+{{- end }}
+
+{{- define "common.probe" }}
+{{- include "common.utils.merge" (append . "common.probe.tpl") }}
+{{- end }}

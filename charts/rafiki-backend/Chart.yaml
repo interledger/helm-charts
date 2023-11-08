@@ -1,26 +1,27 @@
 apiVersion: v2
 name: rafiki-backend
-description: Rafiki Backend Service
-maintainers:
-  - name: sabineschaller
+description: Rafiki Backend Helm chart for Kubernetes
+home: https://github.com/interledger/rafiki
 
-# A chart can be either an 'application' or a 'library' chart.
-#
-# Application charts are a collection of templates that can be packaged into versioned archives
-# to be deployed.
-#
-# Library charts provide useful utilities or functions for the chart developer. They're included as
-# a dependency of application charts to inject those utilities and functions into the rendering
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
 type: application
+version: 0.1.0
+appVersion: "v1.0.0-alpha.5"
 
-# This is the chart version. This version number should be incremented each time you make changes
-# to the chart and its templates, including the app version.
-# Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.4.0
+dependencies:
+  - name: common
+    version: 0.0.1
+    repository: file://../common
+    import-values:
+      - child: securityContext
+        parent: securityContext
+      - child: podSecurityContext
+        parent: podSecurityContext
+  - name: redis
+    version: "18.2.1"
+    repository: "https://charts.bitnami.com/bitnami"
 
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application. Versions are not expected to
-# follow Semantic Versioning. They should reflect the version the application is using.
-# It is recommended to use it with quotes.
-appVersion: 'v1.0.0-alpha.5'
+maintainers:
+  - name: golobitch
+    email: tadej.golobic@gatehub.net
+  - name: enejm
+    email: enej.mlinaric@gatehub.net

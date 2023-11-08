@@ -1,0 +1,23 @@
+{{- define "common.service.tpl" -}}
+{{- $top := first . }}
+{{- $services := index . 1 }}
+{{- range $service := $services }}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ printf "%s-%s" (include "common.fullname" $top) $service.name }}
+  {{- include "common.metadata" (list $top) | nindent 2 }}
+spec:
+  type: {{ $service.type }}
+  ports: {{- toYaml $service.ports | nindent 4 }}
+  selector:
+    {{- include "common.selectorLabels" $top | nindent 4 }}
+{{- end }}
+{{- end }}
+
+{{- define "common.service" -}}
+{{- include "common.utils.merge" (append . "common.service.tpl") }}
+{{- end }}

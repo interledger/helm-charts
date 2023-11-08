@@ -1,0 +1,15 @@
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  runAsUser: 1337
+  runAsNonRoot: true
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+
+
+podSecurityContext:
+  fsGroup: 1337
+  seccompProfile:
+    type: RuntimeDefault
+

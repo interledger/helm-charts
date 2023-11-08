@@ -1,0 +1,60 @@
+{{- define "common.ingress.metadata" -}}
+{{- $ingress := index . 1 }}
+{{- with $ingress.annotations }}
+annotations:
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}
+
+{{- define "common.ingress.tpl" -}}
+{{- $top := first . }}
+{{- $ingress := index . 1 }}
+{{- $service := index . 2 }}
+{{- $fullName := include "common.fullname" $top }}
+{{- $svcPort := $service.port }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "common.fullname" $top }}
+  {{- include "common.metadata" (append . "common.ingress.metadata") | nindent 2 }}
+spec:
+{{- if $ingress.tls }}
+  tls:
+  {{- range $ingress.tls }}
+  - hosts:
+    {{- range .hosts }}
+    - {{ . | quote }}
+    {{- end }}
+    secretName: {{ .secretName }}
+  {{- end }}
+{{- end }}
+  rules:
+  {{- range $ingress.hosts }}
+  - host: {{ .host | quote }}
+    http:
+      paths:
+      {{- range .paths }}
+      - path: {{ .path }}
+        {{- if and .pathType (semverCompare ">=1.18-0" $top.Capabilities.KubeVersion.GitVersion) }}
+        pathType: {{ .pathType }}
+        {{- end }}
+        backend:
+          {{- if semverCompare ">=1.19-0" $top.Capabilities.KubeVersion.GitVersion }}
+          service:
+            name: {{ $fullName }}
+            port:
+              number: {{ $svcPort }}
+          {{- else }}
+          serviceName: {{ $fullName }}
+          servicePort: {{ $svcPort }}
+          {{- end }}
+      {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- define "common.ingress" -}}
+{{- $ingress := index . 1 }}
+{{- if $ingress.enabled }}
+  {{- include "common.utils.merge" (append . "common.ingress.tpl") }}
+{{- end }}
+{{- end }}
