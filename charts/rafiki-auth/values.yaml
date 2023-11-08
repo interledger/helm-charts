@@ -1,21 +1,90 @@
+replicaCount: 1
+
+nodeSelector: {}
+
+image: &image
+  repository: ghcr.io/interledger/rafiki-auth
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 1
+  cpuUtilizationPercentage: 80
+  memoryUtilizationPercentage: 80
+
+service:
+  - name: service
+    type: ClusterIP
+    ports:
+      - port: 3006
+        targetPort: 3006
+        protocol: TCP
+        name: auth
+      - port: 3003
+        targetPort: 3003
+        protocol: TCP
+        name: admin
+      - port: 3007
+        targetPort: 3007
+        protocol: TCP
+        name: introspection
+
+configmap:
+  - files/config.yaml
+
+secrets:
+  - files/secret.yaml
+
+containers:
+  - name: server
+    image:
+      <<: *image
+    envFrom:
+      - configMapRef:
+          name: rafiki-auth
+      - secretRef:
+          name: rafiki-auth
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 200m
+      limits:
+        memory: 512Mi
+        cpu: 400m
+    ports:
+      - name: auth
+        containerPort: 3006
+        protocol: TCP
+      - name: admin
+        containerPort: 3003
+        protocol: TCP
+      - name: introspection
+        containerPort: 3007
+        protocol: TCP
+
 nodeEnv: development
 logLevel: debug
 postgresql:
-  host: "postgres.example.com"
-  port: 5432
+  host: "34.42.108.250"
+  port: "5432"
   username: "auth"
   database: "auth"
-  password: "changeme"  # override this value
-port:
-  admin: 3003
-  auth: 3006
-  introspection: 3007
+  password: "auth"  # override this value
 identityServer:
   domain: "http://cloud-nine-wallet/idp"
   secret: "changeme"
 interaction:
   incomingPayment: "false"
   quote: "false"
+port:
+  admin: 3003
+  auth: 3006
+  introspection: 3007
 grant:
   waitSeconds: 5
 accessToken:
@@ -24,26 +93,3 @@ accessToken:
 cookieKey: ''
 workers:
   cleanup: 1
-image:
-  repository: ghcr.io/interledger/rafiki-auth
-  tag: 'v1.0.0-alpha.3'
-  digest: ''
-  pullPolicy: IfNotPresent
-rollingUpdate:
-  maxSurge: 100%
-  maxUnavailable: 50%
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ''
-securityContext:
-  {}
-#  resources:
-#    limits:
-#      memory: 1Gi
-#      cpu: 450m
-#    requests:
-#      memory: 800Mi
-#      cpu: 300m
