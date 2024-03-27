@@ -1,3 +1,4 @@
+nodeEnv: development
 serviceUrls:
   GRAPHQL_URL: http://rafiki-backend:3001/graphql
 port: 3010
