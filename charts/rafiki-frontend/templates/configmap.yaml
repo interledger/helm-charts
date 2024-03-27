@@ -7,5 +7,5 @@ metadata:
 data: 
   GRAPHQL_URL: "{{ .Values.serviceUrls.GRAPHQL_URL}}"
   LOG_LEVEL: debug
-  NODE_ENV: development
+  NODE_ENV: "{{ .Values.nodeEnv }}"
   PORT: "{{ .Values.port }}"
