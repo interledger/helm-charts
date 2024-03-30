@@ -1,5 +1,6 @@
 nodeEnv: development
 logLevel: debug
+enableManualMigrations: true
 serviceUrls:
   PUBLIC_HOST: http://rafiki-backend
   OPEN_PAYMENTS_URL: http://rafiki-backend
