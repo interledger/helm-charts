@@ -19,3 +19,4 @@ data:
   NODE_ENV: "{{ .Values.nodeEnv }}"
   PORT: "{{ .Values.port.auth }}"
   WAIT_SECONDS: "{{ .Values.grant.waitSeconds }}"
+  ENABLE_MANUAL_MIGRATIONS: "{{ .Values.enableManualMigrations }}"
