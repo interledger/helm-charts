@@ -6,7 +6,7 @@ postgresql:
   port: 5432
   username: "auth"
   database: "auth"
-  password: "changeme"  # override this value
+  password: "changeme" # override this value
 port:
   admin: 3003
   auth: 3006
