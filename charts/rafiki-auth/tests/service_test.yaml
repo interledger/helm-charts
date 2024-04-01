@@ -1,0 +1,63 @@
+suite: Rafiki Auth - Service Test
+templates:
+  - service.yaml
+values:
+  - ../values.yaml
+release:
+  name: rafiki-auth
+tests:
+  - it: 'Should have correct basic data'
+    asserts:
+      - containsDocument:
+          kind: Service
+          apiVersion: v1
+          name: rafiki-auth-service
+  - it: 'Should have correct chart and app versions set in metadata labels'
+    asserts:
+      - isSubset:
+          path: metadata.labels
+          content:
+            helm.sh/chart: rafiki-auth-0.1.0
+            app.kubernetes.io/name: rafiki-auth
+            app.kubernetes.io/instance: rafiki-auth
+            app.kubernetes.io/managed-by: Helm
+  - it: 'Should be type of ClusterIP'
+    asserts:
+      - equal:
+          path: spec.type
+          value: ClusterIP
+  - it: 'Should have three ports exposed'
+    asserts:
+      - lengthEqual:
+          path: spec.ports
+          count: 3
+  - it: 'Should have correct ports exposed'
+    asserts:
+      - contains:
+          path: spec.ports
+          content:
+            name: admin
+            port: 3003
+            protocol: TCP
+            targetPort: 3003
+      - contains:
+          path: spec.ports
+          content:
+            name: auth
+            port: 3006
+            protocol: TCP
+            targetPort: 3006
+      - contains:
+          path: spec.ports
+          content:
+            name: introspection
+            port: 3007
+            protocol: TCP
+            targetPort: 3007
+  - it: 'Should have selectors set'
+    asserts:
+      - isSubset:
+          path: spec.selector
+          content:
+            app.kubernetes.io/name: rafiki-auth
+            app.kubernetes.io/instance: rafiki-auth
