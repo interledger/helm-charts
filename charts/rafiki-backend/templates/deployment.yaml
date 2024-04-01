@@ -21,21 +21,30 @@ spec:
         app.kubernetes.io/name: {{ include "rafiki-backend.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-    {{- with .Values.imagePullSecrets }}
+    {{- with .Values.imagePullSecrets -}}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{ if .Values.serviceAccount.create }}
+    {{- end -}}
+    {{- if .Values.serviceAccount.create }}
       serviceAccountName: {{ template "backend.serviceAccountName" . }}
+      {{ with .Values.podSecurityContext -}}
       securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
-    {{ end }}
+        {{- toYaml . | nindent 8 -}}
+      {{- end -}}
+    {{- end }}
+    {{- if .Values.serviceAccount.create -}}
       volumes:
-    {{ if .Values.serviceAccount.create }}
         - name: {{ include "rafiki-backend.fullname" . }}-sa-key
           secret:
             secretName: {{ include "rafiki-backend.fullname" . }}-sa-key
-    {{ end }}
+    {{- end }}
+    {{- if .Values.enableManualMigrations }}
+      initContainers:
+        - name: database-migrations
+          image: {{ include "backend.image" . }}
+          command: ["npm", "run", "knex -- migrate:latest --env production"]
+          workingDir: /home/rafiki/packages/backend/
+    {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -57,21 +66,5 @@ spec:
             - name: connector
               containerPort: {{ .Values.port.connector }}
               protocol: TCP
-           #livenessProbe:
-           #  failureThreshold: 15
-           #  initialDelaySeconds: 30
-           #  periodSeconds: 10
-           #  timeoutSeconds: 10
-           #  httpGet:
-           #    path: /healthz
-           #    port: admin
-           #readinessProbe:
-           #  failureThreshold: 3
-           #  initialDelaySeconds: 5
-           #  periodSeconds: 5
-           #  timeoutSeconds: 5
-           #  httpGet:
-           #    path: /healthz
-           #    port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
