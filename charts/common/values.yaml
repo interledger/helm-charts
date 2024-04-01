@@ -7,9 +7,7 @@ securityContext:
   readOnlyRootFilesystem: true
   allowPrivilegeEscalation: false
 
-
 podSecurityContext:
   fsGroup: 1337
   seccompProfile:
     type: RuntimeDefault
-
