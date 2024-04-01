@@ -1,0 +1,63 @@
+suite: Rafiki Backend - Service Test
+templates:
+  - service.yaml
+values:
+  - ../values.yaml
+release:
+  name: rafiki-backend
+tests:
+  - it: 'Should have correct basic data'
+    asserts:
+      - containsDocument:
+          kind: Service
+          apiVersion: v1
+          name: rafiki-backend-service
+  - it: 'Should have correct chart and app versions set in metadata labels'
+    asserts:
+      - isSubset:
+          path: metadata.labels
+          content:
+            helm.sh/chart: rafiki-backend-0.1.0
+            app.kubernetes.io/name: rafiki-backend
+            app.kubernetes.io/instance: rafiki-backend
+            app.kubernetes.io/managed-by: Helm
+  - it: 'Should be type of ClusterIP'
+    asserts:
+      - equal:
+          path: spec.type
+          value: ClusterIP
+  - it: 'Should have three ports exposed'
+    asserts:
+      - lengthEqual:
+          path: spec.ports
+          count: 3
+  - it: 'Should have correct ports exposed'
+    asserts:
+      - contains:
+          path: spec.ports
+          content:
+            name: open-payments
+            port: 3000
+            protocol: TCP
+            targetPort: 3000
+      - contains:
+          path: spec.ports
+          content:
+            name: admin
+            port: 3001
+            protocol: TCP
+            targetPort: 3001
+      - contains:
+          path: spec.ports
+          content:
+            name: connector
+            port: 3002
+            protocol: TCP
+            targetPort: 3002
+  - it: 'Should have selectors set'
+    asserts:
+      - isSubset:
+          path: spec.selector
+          content:
+            app.kubernetes.io/name: rafiki-backend
+            app.kubernetes.io/instance: rafiki-backend
