@@ -1,26 +1,54 @@
+nodeEnv: production
+logLevel: debug
+
+replicaCount: 1
+
+nodeSelector: {}
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 1
+  cpuUtilizationPercentage: 80
+  memoryUtilizationPercentage: 80
+
+service:
+  - name: service
+    type: ClusterIP
+    ports:
+      - port: 3010
+        targetPort: 3010
+        protocol: TCP
+        name: http
+
+configmap:
+  - files/config.yaml
+
+containers:
+  - name: server
+    envFrom:
+      - configMapRef:
+          name: rafiki-frontend
+    resources:
+      requests:
+        memory: 128Mi
+        cpu: 0.5m
+      limits:
+        memory: 512Mi
+        cpu: 1m
+    ports:
+      - name: http
+        containerPort: 3010
+        protocol: TCP
+
 serviceUrls:
-  GRAPHQL_URL: http://rafiki-backend:3001/graphql
+  GRAPHQL_URL: http://rafiki-backend-service.rafiki:3001/graphql
 port: 3010
-image:
-  repository: ghcr.io/interledger/rafiki-frontend
-  tag: 'v1.0.0-alpha.3'
-  digest: ''
-  pullPolicy: IfNotPresent
 rollingUpdate:
   maxSurge: 100%
   maxUnavailable: 50%
-serviceAccount:
-  # Specifies whether a service account should be created
-  create: true
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ''
-securityContext:
-  {}
-#  resources:
-#    limits:
-#      memory: 1Gi
-#      cpu: 450m
-#    requests:
-#      memory: 800Mi
-#      cpu: 300m

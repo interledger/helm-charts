@@ -1,0 +1,49 @@
+suite: Rafiki Frontend - Service Test
+templates:
+  - service.yaml
+values:
+  - ../values.yaml
+release:
+  name: rafiki-frontend
+tests:
+  - it: 'Should have correct basic data'
+    asserts:
+      - containsDocument:
+          kind: Service
+          apiVersion: v1
+          name: rafiki-frontend-service
+  - it: 'Should have correct chart and app versions set in metadata labels'
+    asserts:
+      - isSubset:
+          path: metadata.labels
+          content:
+            helm.sh/chart: rafiki-frontend-0.1.0
+            app.kubernetes.io/name: rafiki-frontend
+            app.kubernetes.io/instance: rafiki-frontend
+            app.kubernetes.io/managed-by: Helm
+  - it: 'Should be type of ClusterIP'
+    asserts:
+      - equal:
+          path: spec.type
+          value: ClusterIP
+  - it: 'Should have one port exposed'
+    asserts:
+      - lengthEqual:
+          path: spec.ports
+          count: 1
+  - it: 'Should have correct port exposed'
+    asserts:
+      - contains:
+          path: spec.ports
+          content:
+            name: http
+            port: 3010
+            protocol: TCP
+            targetPort: 3010
+  - it: 'Should have selectors set'
+    asserts:
+      - isSubset:
+          path: spec.selector
+          content:
+            app.kubernetes.io/name: rafiki-frontend
+            app.kubernetes.io/instance: rafiki-frontend

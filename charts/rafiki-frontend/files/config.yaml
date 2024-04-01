@@ -1,0 +1,4 @@
+GRAPHQL_URL: "{{ .Values.serviceUrls.GRAPHQL_URL}}"
+LOG_LEVEL: "{{ .Values.logLevel }}"
+NODE_ENV: "{{ .Values.nodeEnv }}"
+PORT: "{{ .Values.port }}"
