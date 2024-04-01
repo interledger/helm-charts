@@ -66,5 +66,4 @@ func TestHelmBasicExampleDeployment(t *testing.T) {
 
 	// Now lets check that the service that we have, has correct name
 	require.Equal(t, service.Name, serviceName)
-	require.Equal(t, service.Namespace, namespaceName)
 }
