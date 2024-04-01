@@ -5,20 +5,18 @@ home: https://github.com/interledger/rafiki
 
 type: application
 version: 0.1.0
-appVersion: "v1.0.0-alpha.5"
+appVersion: "v1.0.0-alpha.7"
 
 dependencies:
   - name: common
     version: 0.0.1
     repository: file://../common
-    import-values:
-      - child: securityContext
-        parent: securityContext
-      - child: podSecurityContext
-        parent: podSecurityContext
+    # import-values:
+    #   - child: securityContext
+    #     parent: securityContext
+    #   - child: podSecurityContext
+    #     parent: podSecurityContext
 
 maintainers:
   - name: golobitch
     email: tadej.golobic@gatehub.net
-  - name: enejm
-    email: enej.mlinaric@gatehub.net
