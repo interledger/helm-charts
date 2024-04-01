@@ -2,9 +2,6 @@ replicaCount: 1
 
 nodeSelector: {}
 
-image: &image
-  repository: ghcr.io/interledger/rafiki-auth
-
 serviceAccount:
   create: false
   annotations: {}
@@ -42,8 +39,6 @@ secrets:
 
 containers:
   - name: server
-    image:
-      <<: *image
     envFrom:
       - configMapRef:
           name: rafiki-auth
@@ -70,7 +65,7 @@ containers:
 nodeEnv: development
 logLevel: debug
 postgresql:
-  host: "34.42.108.250"
+  host: "postgresql.rafiki"
   port: "5432"
   username: "auth"
   database: "auth"
