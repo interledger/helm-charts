@@ -41,9 +41,9 @@ containers:
   - name: server
     envFrom:
       - configMapRef:
-          name: rafiki-auth
+          name: "{{ .Release.Name }}"
       - secretRef:
-          name: rafiki-auth
+          name: "{{ .Release.Name }}"
     resources:
       requests:
         memory: 128Mi

@@ -33,7 +33,7 @@ containers:
   - name: server
     envFrom:
       - configMapRef:
-          name: rafiki-frontend
+          name: "{{ .Release.Name }}"
     resources:
       requests:
         memory: 128Mi
