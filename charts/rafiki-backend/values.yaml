@@ -2,9 +2,6 @@ replicaCount: 1
 
 nodeSelector: {}
 
-image: &image
-  repository: ghcr.io/interledger/rafiki-backend
-
 serviceAccount:
   create: false
   annotations: {}
@@ -42,8 +39,6 @@ secrets:
 
 containers:
   - name: server
-    image:
-      <<: *image
     envFrom:
       - configMapRef:
           name: rafiki-backend
@@ -81,13 +76,13 @@ serviceUrls:
 redis:
   auth:
     enabled: false
-  host: 'rafiki-backend-redis-master.rafiki-backend'
+  host: ':0ePCOYJtRF@redis-replicas.rafiki/0'
   port: 6379
   tlsCaFile: ''
   tlsCertFile: ''
   tlsKeyFile: ''
 postgresql:
-  host: "34.42.108.250"
+  host: "postgresql.rafiki"
   port: "5432"
   username: "backend"
   database: "backend"
