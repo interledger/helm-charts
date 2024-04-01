@@ -8,11 +8,11 @@
   securityContext:
     {{- toYaml $top.Values.securityContext | nindent 4 }}
   {{- if $imageDigest}}
-  image: "{{ $image.repository }}@sha256:{{ $top.Chart.AppVersion }}"
+  image: "ghcr.io/interledger/{{ $top.Chart.Name }}@sha256:{{ $imageDigest }}"
   {{- else }}
-  image: "{{ $image.repository }}:{{ $top.Chart.AppVersion }}"
+  image: "ghcr.io/interledger/{{ $top.Chart.Name }}:{{ $top.Chart.AppVersion }}"
   {{- end }}
-  imagePullPolicy: {{ $container.image.pullPolicy | quote | default "Always" }}
+  imagePullPolicy: {{ $container.imagePullPolicy | quote | default "Always" }}
   resources:
     {{- toYaml $container.resources | nindent 4 }}
 
