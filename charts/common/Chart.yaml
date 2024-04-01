@@ -4,3 +4,7 @@ description: Rafiki common helm chart for building k8s resources
 
 type: library
 version: 0.1.0
+
+maintainers:
+  - name: golobitch
+    email: tadej.golobic@gatehub.net
