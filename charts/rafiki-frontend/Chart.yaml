@@ -9,7 +9,7 @@ appVersion: "v1.0.0-alpha.7"
 
 dependencies:
   - name: common
-    version: 0.0.1
+    version: 0.1.0
     repository: file://../common
 
 maintainers:
