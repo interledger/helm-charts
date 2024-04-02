@@ -17,10 +17,3 @@ serviceAccount:
   name: ''
 securityContext:
   {}
-#  resources:
-#    limits:
-#      memory: 1Gi
-#      cpu: 450m
-#    requests:
-#      memory: 800Mi
-#      cpu: 300m
