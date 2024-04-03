@@ -1,5 +1,6 @@
 nodeEnv: development
 logLevel: debug
+enableManualMigrations: true
 postgresql:
   host: "postgres.example.com"
   port: 5432

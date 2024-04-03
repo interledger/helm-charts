@@ -44,3 +44,4 @@ data:
   WEBHOOK_WORKERS: "{{ .Values.workers.webhook }}"
   WEBHOOK_WORKER_IDLE: "{{ .Values.workerIdle }}"
   WITHDRAWAL_THROTTLE_DELAY: "{{ .Values.withdrawalThrottleDelay }}"
+  ENABLE_MANUAL_MIGRATIONS: "{{ .Values.enableManualMigrations }}"
