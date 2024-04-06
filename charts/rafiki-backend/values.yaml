@@ -4,7 +4,7 @@ enableManualMigrations: true
 serviceUrls:
   PUBLIC_HOST: http://rafiki-backend
   OPEN_PAYMENTS_URL: http://rafiki-backend
-  PAYMENT_POINTER_URL: http://rafiki-backend/.well-known/pay
+  WALLET_ADDRESS_URL: http://rafiki-backend/.well-known/pay
   WEBHOOK_URL: http://cloud-nine-wallet/webhooks
   EXCHANGE_RATES_URL: http://cloud-nine-wallet/prices
   QUOTE_URL: http://cloud-nine-wallet/quotes
