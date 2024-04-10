@@ -23,7 +23,6 @@ data:
   OPEN_PAYMENTS_URL: "{{ .Values.serviceUrls.OPEN_PAYMENTS_URL }}"
   OUTGOING_PAYMENT_WORKERS: "{{ .Values.workers.outgoingPayment }}"
   OUTGOING_PAYMENT_WORKER_IDLE: "{{ .Values.workerIdle }}"
-  PAYMENT_POINTER_URL: "{{ .Values.serviceUrls.PAYMENT_POINTER_URL }}"
   PAYMENT_POINTER_WORKERS: "{{ .Values.workers.paymentPointer }}"
   PAYMENT_POINTER_WORKER_IDLE: "{{ .Values.workerIdle }}"
   PRIVATE_KEY_FILE: "{{ .Values.key.file }}"
@@ -39,6 +38,7 @@ data:
   TIGERBEETLE_CLUSTER_ID: none
   TIGERBEETLE_REPLICA_ADDRESSES: none
   USE_TIGERBEETLE: "false"
+  WALLET_ADDRESS_URL: "{{ .Values.serviceUrls.WALLET_ADDRESS_URL }}"
   WEBHOOK_TIMEOUT:  "{{ .Values.lifetime.webhook }}"
   WEBHOOK_URL: "{{ .Values.serviceUrls.WEBHOOK_URL }}"
   WEBHOOK_WORKERS: "{{ .Values.workers.webhook }}"
