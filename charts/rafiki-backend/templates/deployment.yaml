@@ -42,8 +42,13 @@ spec:
       initContainers:
         - name: database-migrations
           image: {{ include "backend.image" . }}
-          command: ["npm", "run", "knex -- migrate:latest --env production"]
+          command: ["npm", "run", "knex", "--", "migrate:latest", "--env", "production"]
           workingDir: /home/rafiki/packages/backend/
+          envFrom:
+          - configMapRef:
+              name: {{ include "rafiki-backend.fullname" . }}
+          - secretRef:
+              name: {{ include "rafiki-backend.fullname" . }}-secrets
     {{- end }}
       containers:
         - name: {{ .Chart.Name }}
