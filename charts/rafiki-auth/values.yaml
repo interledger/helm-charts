@@ -2,11 +2,11 @@ nodeEnv: development
 logLevel: debug
 enableManualMigrations: true
 postgresql:
-  host: "postgres.example.com"
+  host: "postgresql.default"
   port: 5432
   username: "auth"
   database: "auth"
-  password: "changeme"  # override this value
+  password: "auth"  # override this value
 port:
   admin: 3003
   auth: 3006
@@ -27,7 +27,7 @@ workers:
   cleanup: 1
 image:
   repository: ghcr.io/interledger/rafiki-auth
-  tag: 'v1.0.0-alpha.3'
+  tag: 'v1.0.0-alpha.8'
   digest: ''
   pullPolicy: IfNotPresent
 rollingUpdate:

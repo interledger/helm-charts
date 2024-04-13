@@ -42,8 +42,13 @@ spec:
       initContainers:
         - name: database-migrations
           image: {{ include "auth.image" . }}
-          command: ["npm", "run", "knex -- migrate:latest --env production"]
+          command: ["npm", "run", "knex", "--", "migrate:latest", "--env", "production"]
           workingDir: /home/rafiki/packages/auth/
+          envFrom:
+           - configMapRef:
+               name: {{ include "rafiki-auth.fullname" . }}
+           - secretRef:
+               name: {{ include "rafiki-auth.fullname" . }}-secrets
     {{- end }}
       containers:
         - name: {{ .Chart.Name }}
