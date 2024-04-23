@@ -1,9 +1,10 @@
+nodeEnv: production
 serviceUrls:
   GRAPHQL_URL: http://rafiki-backend:3001/graphql
 port: 3010
 image:
   repository: ghcr.io/interledger/rafiki-frontend
-  tag: 'v1.0.0-alpha.3'
+  tag: 'v1.0.0-alpha.8'
   digest: ''
   pullPolicy: IfNotPresent
 rollingUpdate:
