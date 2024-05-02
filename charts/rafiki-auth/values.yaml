@@ -7,6 +7,12 @@ postgresql:
   username: "auth"
   database: "auth"
   password: "auth"
+redis:
+  host: 'redis.example.com'
+  port: 6379
+  tlsCaFile: 'tlsCaFile/path'
+  tlsCertFile: 'tlsCertFile/path'
+  tlsKeyFile: 'tlsKeyFile/path'
 port:
   admin: 3003
   auth: 3006
