@@ -25,6 +25,9 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 
+{{- define "auth.redisUrl" -}}
+redis://{{ .Values.redis.host }}:{{ .Values.redis.port }}
+{{- end -}}
 {{- define "auth.postgresqlUrl" -}}
 postgresql://{{ .Values.postgresql.username }}:{{ .Values.postgresql.password }}@{{ .Values.postgresql.host }}:{{ .Values.postgresql.port | int}}/{{ .Values.postgresql.database }}
 {{- end -}}

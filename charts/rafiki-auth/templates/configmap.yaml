@@ -20,3 +20,6 @@ data:
   PORT: "{{ .Values.port.auth }}"
   WAIT_SECONDS: "{{ .Values.grant.waitSeconds }}"
   ENABLE_MANUAL_MIGRATIONS: "{{ .Values.enableManualMigrations }}"
+  REDIS_TLS_CA_FILE_PATH: "{{ .Values.redis.tlsCaFile }}"
+  REDIS_TLS_CERT_FILE_PATH: "{{ .Values.redis.tlsCertFile }}"
+  REDIS_TLS_KEY_FILE_PATH: "{{ .Values.redis.tlsKeyFile }}"
