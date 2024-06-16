@@ -18,3 +18,7 @@ serviceAccount:
   name: ''
 securityContext:
   {}
+kratos: 
+  containerPublicUrl:
+  browserPublicUrl:
+  adminUrl:
