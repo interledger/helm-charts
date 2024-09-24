@@ -23,6 +23,7 @@ identityServer:
 interaction:
   incomingPayment: "false"
   quote: "false"
+  listAll: "true"
 grant:
   waitSeconds: 5
 accessToken:
@@ -33,7 +34,7 @@ workers:
   cleanup: 1
 image:
   repository: ghcr.io/interledger/rafiki-auth
-  tag: 'v1.0.0-alpha.8'
+  tag: 'v1.0.0-alpha.18'
   digest: ''
   pullPolicy: IfNotPresent
 rollingUpdate:
