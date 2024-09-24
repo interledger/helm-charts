@@ -14,6 +14,7 @@ data:
   GRAPHQL_IDEMPOTENCY_KEY_TTL_MS: "{{ .Values.idempotency.keyTTL}}"
   GRAPHQL_IDEMPOTENCY_KEY_LOCK_MS: "{{ .Values.idempotency.keyLock}}"
   ILP_ADDRESS: "{{ .Values.ilp.address }}"
+  ILP_CONNECTOR_URL: "{{ .Values.ilp.connectorUrl }}"
   INCOMING_PAYMENT_WORKERS: "{{ .Values.workers.incomingPayment }}"
   INCOMING_PAYMENT_WORKER_IDLE: "{{ .Values.workerIdle }}"
   KEY_ID: "{{ .Values.key.id }}"

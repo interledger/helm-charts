@@ -30,6 +30,7 @@ ilp:
   address: test.cloud-nine-wallet  # override this value
   streamSecret: "BjPXtnd00G2mRQwP/8ZpwyZASOch5sUXT5o0iR5b5wU="  # override this value
   slippage: 0.01
+  connectorUrl: https://connector.example.com # override this value
 key:
   id: rafiki
   file: ''
