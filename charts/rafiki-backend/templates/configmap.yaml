@@ -5,6 +5,7 @@ metadata:
   labels:
 {{ include "rafiki-backend.labels" . | indent 4 }}
 data: 
+  INSTANCE_NAME: "{{ .Values.instanceName }}"
   ADMIN_PORT: "{{ .Values.port.admin }}"
   AUTH_SERVER_GRANT_URL: "{{ .Values.serviceUrls.AUTH_SERVER_GRANT_URL }}"
   AUTH_SERVER_INTROSPECTION_URL: "{{ .Values.serviceUrls.AUTH_SERVER_INTROSPECTION_URL }}"
