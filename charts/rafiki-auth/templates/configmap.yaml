@@ -11,7 +11,7 @@ data:
   AUTH_PORT: "{{ .Values.port.auth }}"
   AUTH_SERVER_DOMAIN: {{ include "auth.grantUrl" . | quote }}
   DATABASE_CLEANUP_WORKERS: "{{ .Values.workers.cleanup }}"
-  IDENTITY_SERVER_DOMAIN: "{{ .Values.identityServer.domain }}"
+  IDENTITY_SERVER_URL: "{{ .Values.identityServer.domain }}"
   INCOMING_PAYMENT_INTERACTION: "{{ .Values.interaction.incomingPayment }}"
   QUOTE_INTERACTION: "{{ .Values.interaction.quote }}"
   LIST_ALL_ACCESS_INTERACTION: "{{ .Values.interaction.listAll }}"
