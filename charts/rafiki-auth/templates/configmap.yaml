@@ -14,6 +14,7 @@ data:
   IDENTITY_SERVER_DOMAIN: "{{ .Values.identityServer.domain }}"
   INCOMING_PAYMENT_INTERACTION: "{{ .Values.interaction.incomingPayment }}"
   QUOTE_INTERACTION: "{{ .Values.interaction.quote }}"
+  LIST_ALL_ACCESS_INTERACTION: "{{ .Values.interaction.listAll }}"
   INTROSPECTION_PORT: "{{ .Values.port.introspection }}"
   LOG_LEVEL: "{{ .Values.logLevel }}"
   NODE_ENV: "{{ .Values.nodeEnv }}"

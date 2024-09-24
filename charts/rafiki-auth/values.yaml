@@ -23,6 +23,7 @@ identityServer:
 interaction:
   incomingPayment: "false"
   quote: "false"
+  listAll: "true"
 grant:
   waitSeconds: 5
 accessToken:
