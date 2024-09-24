@@ -19,6 +19,7 @@ serviceAccount:
 securityContext:
   {}
 kratos:
-  containerPublicUrl:
-  browserPublicUrl:
-  adminUrl:
+  enabled: true
+  containerPublicUrl: https://example.com
+  browserPublicUrl: https://example.com
+  adminUrl: https://admin.example.com

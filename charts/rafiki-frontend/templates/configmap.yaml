@@ -9,6 +9,7 @@ data:
   LOG_LEVEL: debug
   NODE_ENV: "{{ .Values.nodeEnv }}"
   PORT: "{{ .Values.port }}"
+  AUTH_ENABLED: "{{ .Values.kratos.enabled }}"
   KRATOS_CONTAINER_PUBLIC_URL: "{{ .Values.kratos.containerPublicUrl }}"
   KRATOS_BROWSER_PUBLIC_URL: "{{ .Values.kratos.browserPublicUrl }}"
   KRATOS_ADMIN_URL: "{{ .Values.kratos.adminUrl }}"
