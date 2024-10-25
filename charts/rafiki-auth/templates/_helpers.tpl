@@ -78,6 +78,8 @@ Create the auth image
 {{- .Values.image.repository -}}:{{- .Values.image.tag -}}
 {{ else if .Values.image.digest }}
 {{- .Values.image.repository -}}@{{- .Values.image.digest -}}
+{{ else if .Chart.AppVersion}}
+{{- .Values.image.repository -}}:{{ .Chart.AppVersion }}
 {{ else }}
 {{- .Values.image.repository -}}:latest
 {{ end }}
