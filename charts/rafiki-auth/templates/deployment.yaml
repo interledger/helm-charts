@@ -49,6 +49,10 @@ spec:
                name: {{ include "rafiki-auth.fullname" . }}
            - secretRef:
                name: {{ include "rafiki-auth.fullname" . }}-secrets
+          {{- with .Values.initContainerResources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
     {{- end }}
       containers:
         - name: {{ .Chart.Name }}
@@ -71,7 +75,7 @@ spec:
             - name: introspection
               containerPort: {{ .Values.port.introspection }}
               protocol: TCP
-          {{- with .Values.resources -}}
+          {{- with .Values.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
-          {{- end -}}
+          {{- end }}
