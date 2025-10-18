@@ -3,6 +3,18 @@ entries:
   rafiki-auth:
   - apiVersion: v2
     appVersion: v1.0.0-alpha.8
+    created: "2025-10-18T19:40:53.835831698Z"
+    description: Rafiki Auth Service
+    digest: c5368c11bf27457b5df0c57ec7bbd6d414d9617ddc093d1a67c9823717c76291
+    maintainers:
+    - name: sabineschaller
+    name: rafiki-auth
+    type: application
+    urls:
+    - https://github.com/interledger/helm-charts/releases/download/rafiki-auth-0.4.4/rafiki-auth-0.4.4.tgz
+    version: 0.4.4
+  - apiVersion: v2
+    appVersion: v1.0.0-alpha.8
     created: "2024-05-21T15:26:39.661220123Z"
     description: Rafiki Auth Service
     digest: 3dfd9989e6ad57c7944e119869a8cca7261e7728f697eb32ee3baa1f95865e57
@@ -86,6 +98,18 @@ entries:
     - https://github.com/interledger/helm-charts/releases/download/rafiki-auth-0.1.0/rafiki-auth-0.1.0.tgz
     version: 0.1.0
   rafiki-backend:
+  - apiVersion: v2
+    appVersion: v1.0.0-alpha.8
+    created: "2025-10-18T19:40:54.000688242Z"
+    description: Rafiki Backend Service
+    digest: 53b6eee3cf933f2981eeef26fc34db04ad0163287cf27f6c5eb497d174b3ba29
+    maintainers:
+    - name: sabineschaller
+    name: rafiki-backend
+    type: application
+    urls:
+    - https://github.com/interledger/helm-charts/releases/download/rafiki-backend-0.4.5/rafiki-backend-0.4.5.tgz
+    version: 0.4.5
   - apiVersion: v2
     appVersion: v1.0.0-alpha.8
     created: "2024-05-21T15:26:39.781135274Z"
@@ -185,6 +209,18 @@ entries:
   rafiki-frontend:
   - apiVersion: v2
     appVersion: v1.0.0-alpha.8
+    created: "2025-10-18T19:40:54.181816959Z"
+    description: Rafiki Frontend Service
+    digest: 548649b18f11dafa8bc00487a8452ba62b932cdb12b9a1b69d7e086789fbc874
+    maintainers:
+    - name: sabineschaller
+    name: rafiki-frontend
+    type: application
+    urls:
+    - https://github.com/interledger/helm-charts/releases/download/rafiki-frontend-0.4.4/rafiki-frontend-0.4.4.tgz
+    version: 0.4.4
+  - apiVersion: v2
+    appVersion: v1.0.0-alpha.8
     created: "2024-06-18T12:45:35.702701761Z"
     description: Rafiki Frontend Service
     digest: b56baeaf4a9cf6b232acf895ad7a042efbc1dd156d3c251c703602a80e711e9d
@@ -267,4 +303,4 @@ entries:
     urls:
     - https://github.com/interledger/helm-charts/releases/download/rafiki-frontend-0.1.0/rafiki-frontend-0.1.0.tgz
     version: 0.1.0
-generated: "2024-06-18T12:45:35.702791961Z"
+generated: "2025-10-18T19:40:54.181994781Z"
