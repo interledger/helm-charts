@@ -64,10 +64,17 @@ serviceAccount:
   name: ''
 securityContext:
   {}
-#  resources:
-#    limits:
-#      memory: 1Gi
-#      cpu: 450m
-#    requests:
-#      memory: 800Mi
-#      cpu: 300m
+resources:
+  limits:
+    memory: 1Gi
+    cpu: 450m
+  requests:
+    memory: 800Mi
+    cpu: 300m
+initContainerResources:
+  limits:
+    memory: 512Mi
+    cpu: 250m
+  requests:
+    memory: 256Mi
+    cpu: 100m

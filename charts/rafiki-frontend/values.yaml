@@ -18,6 +18,13 @@ serviceAccount:
   name: ''
 securityContext:
   {}
+resources:
+  limits:
+    memory: 512Mi
+    cpu: 250m
+  requests:
+    memory: 256Mi
+    cpu: 100m
 kratos:
   containerPublicUrl:
   browserPublicUrl:
